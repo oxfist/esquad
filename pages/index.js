@@ -28,6 +28,17 @@ export default function Home() {
         </p>
 
         <div className={styles.grid}>
+          <form onSubmit={buildSquads}>
+            <div>
+              <label htmlFor="teams">Equipos (duplas/tríos/persona)</label>
+            </div>
+            <div>
+              <textarea id="teams" type="textarea" required aria-required />
+            </div>
+            <div>
+              <button type="submit">Formar squads</button>
+            </div>
+          </form>
         </div>
       </main>
 
@@ -44,3 +55,11 @@ export default function Home() {
     </div>
   )
 }
+
+const buildSquads = event => {
+  const teamsSplit = event.target.teams.value.split("\n")
+  console.log('building squads with the following:')
+  console.log(teamsSplit)
+  event.preventDefault()
+}
+

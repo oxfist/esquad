@@ -56,10 +56,26 @@ export default function Home() {
   )
 }
 
-const buildSquads = event => {
-  const teamsSplit = event.target.teams.value.split("\n")
-  console.log('building squads with the following:')
-  console.log(teamsSplit)
+const buildSquads = async event => {
   event.preventDefault()
+
+  const teamsSplit = event.target.teams.value.trim().split("\n")
+  console.log('building squads with the following:')
+  console.log(JSON.stringify({ teams: teamsSplit }))
+
+  const res = await fetch(
+    '/api/squad',
+    {
+      body: JSON.stringify({
+        teams: teamsSplit
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST'
+    }
+  )
+
+  return await res.json()
 }
 

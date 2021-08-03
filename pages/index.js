@@ -60,8 +60,6 @@ const buildSquads = async event => {
   event.preventDefault()
 
   const teamsSplit = event.target.teams.value.trim().split("\n")
-  console.log('building squads with the following:')
-  console.log(JSON.stringify({ teams: teamsSplit }))
 
   const res = await fetch(
     '/api/squad',

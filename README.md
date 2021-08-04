@@ -2,6 +2,13 @@
 
 ![Icon of person performing a squat](./public/squat.png)
 
+## Improvements
+
+- [ ] Properly render squads
+- [ ] Add formatting to squads with 'champion' space
+- [ ] Re-build squads arrangement algorithm from scratch
+- [ ] Add option to keep two people in separate squads
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

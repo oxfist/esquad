@@ -1,8 +1,10 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import styles from '../styles/Home.module.css';
+
+import TeamsForm from '../components/teamsForm';
+import SquadsList from '../components/squadsList';
 
 const esquadLogoSrc = '/squat.png';
 
@@ -75,42 +77,3 @@ export default function Home() {
     </div>
   );
 }
-
-const TeamsForm = ({ handleSubmit }) => (
-  <form onSubmit={handleSubmit}>
-    <div>
-      <label htmlFor="teams">
-        Equipos (duplas/tríos/persona)
-        <div>
-          <textarea id="teams" rows="20" cols="75" required aria-required />
-        </div>
-      </label>
-    </div>
-    <div>
-      <button type="submit">Formar squads</button>
-    </div>
-  </form>
-);
-
-const SquadsList = ({ squads }) => {
-  if (squads.length > 0) {
-    return (
-      <ul>
-        { squads.map((squad) => (
-          <li>
-            <strong>{squad.name}</strong>
-          </li>
-        ))}
-      </ul>
-    );
-  }
-  return <></>;
-};
-
-SquadsList.propTypes = {
-  squads: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
-
-TeamsForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-};

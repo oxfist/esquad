@@ -91,6 +91,11 @@
   }
 }
 
+.textInput {
+  width: 45vw;
+  height: 25vh;
+}
+
 #teamsForm {
   flex-direction: column;
 }

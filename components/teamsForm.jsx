@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from '../styles/Home.module.css';
 
 export default function TeamsForm({ handleSubmit }) {
   return (
@@ -8,7 +9,12 @@ export default function TeamsForm({ handleSubmit }) {
         <label htmlFor="teams">
           Equipos (duplas/tríos/persona)
           <div>
-            <textarea id="teams" rows="20" cols="75" required aria-required />
+            <textarea
+              id="teams"
+              className={styles.textInput}
+              required
+              aria-required
+            />
           </div>
         </label>
       </div>

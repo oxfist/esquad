@@ -2,6 +2,7 @@ const totalSquads = 4;
 
 export default function handler(req, res) {
   const squads = buildSquads(req.body.teams)
+  console.info(squads)
 
   res.status(200).json({
     body: {
@@ -22,7 +23,8 @@ const buildSquads = (teams) => {
 
   let assignedSquad = 0;
   shuffledTeams.forEach(team => {
-    const squad = squads[assignedSquad % totalSquads];
+    const currentSquad = assignedSquad % totalSquads;
+    const squad = squads[currentSquad];
     squad.teams.push(team);
 
     assignedSquad += 1;

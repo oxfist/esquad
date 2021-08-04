@@ -1,10 +1,13 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
+import React, { useState, useEffect } from "react";
 
-const esquadLogoSrc = "/squat.png"
+const esquadLogoSrc = "/squat.png";
 
 export default function Home() {
+  const [squads, setSquads] = useState([]);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -27,18 +30,8 @@ export default function Home() {
           Organiza squads para demos y retros fácilmente
         </p>
 
-        <div className={styles.grid}>
-          <form onSubmit={buildSquads}>
-            <div>
-              <label htmlFor="teams">Equipos (duplas/tríos/persona)</label>
-            </div>
-            <div>
-              <textarea id="teams" type="textarea" required aria-required />
-            </div>
-            <div>
-              <button type="submit">Formar squads</button>
-            </div>
-          </form>
+        <div id="teamsForm"className={styles.grid}>
+          <TeamsForm />
         </div>
       </main>
 
@@ -48,32 +41,55 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer>
     </div>
-  )
+  );
 }
 
-const buildSquads = async event => {
-  event.preventDefault()
+const TeamsForm = () => {
+  useEffect(() => {
+    buildSquads()
+  }, []);
 
-  const teamsSplit = event.target.teams.value.trim().split("\n")
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    buildSquads(event.target.teams.value.trim());
+  };
 
-  const res = await fetch(
-    '/api/squad',
-    {
+  const buildSquads = async (teamsText) => {
+    const teamsSeparated = teamsText.split("\n");
+
+    const requestOptions = {
       body: JSON.stringify({
-        teams: teamsSplit
+        teams: teamsSeparated,
       }),
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      method: 'POST'
-    }
-  )
+      method: "POST",
+    };
 
-  return await res.json()
-}
+    const resFromServer = await fetch("/api/squad", requestOptions);
 
+    setSquads(resFromServer.json());
+
+    return false;
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="teams">Equipos (duplas/tríos/persona)</label>
+      </div>
+      <div>
+        <textarea id="teams" type="textarea" required aria-required />
+      </div>
+      <div>
+        <button type="submit">Formar squads</button>
+      </div>
+    </form>
+  );
+};

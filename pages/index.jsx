@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from '../styles/Home.module.css';
 
@@ -24,18 +24,14 @@ export default function Home() {
 
     const resFromServer = await fetch('/api/squad', requestOptions);
 
-    setSquads(resFromServer.json());
-
-    return false;
+    return resFromServer.json();
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('inside handleSubmit');
-    buildSquads(event.target.teams.value.trim());
+    const newSquads = await buildSquads(event.target.teams.value.trim());
+    setSquads(newSquads.body.squads);
   };
-
-  console.log(`squads: ${squads}`);
 
   return (
     <div className={styles.container}>
@@ -59,8 +55,9 @@ export default function Home() {
           Organiza squads para demos y retros fácilmente
         </p>
 
-        <div id="teamsForm" className={styles.grid}>
+        <div id={styles.teamsForm} className={styles.grid}>
           <TeamsForm handleSubmit={handleSubmit} />
+          <SquadsList squads={squads} />
         </div>
       </main>
 
@@ -79,22 +76,39 @@ export default function Home() {
   );
 }
 
-const TeamsForm = ({ handleSubmit }) => {
-  console.log('inside form creation');
+const TeamsForm = ({ handleSubmit }) => (
+  <form onSubmit={handleSubmit}>
+    <div>
+      <label htmlFor="teams">
+        Equipos (duplas/tríos/persona)
+        <div>
+          <textarea id="teams" rows="20" cols="75" required aria-required />
+        </div>
+      </label>
+    </div>
+    <div>
+      <button type="submit">Formar squads</button>
+    </div>
+  </form>
+);
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="teams">Equipos (duplas/tríos/persona)</label>
-      </div>
-      <div>
-        <textarea id="teams" type="textarea" required aria-required />
-      </div>
-      <div>
-        <button type="submit">Formar squads</button>
-      </div>
-    </form>
-  );
+const SquadsList = ({ squads }) => {
+  if (squads.length > 0) {
+    return (
+      <ul>
+        { squads.map((squad) => (
+          <li>
+            <strong>{squad.name}</strong>
+          </li>
+        ))}
+      </ul>
+    );
+  }
+  return <></>;
+};
+
+SquadsList.propTypes = {
+  squads: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 TeamsForm.propTypes = {

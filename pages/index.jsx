@@ -1,12 +1,41 @@
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import React, { useState, useEffect } from "react";
+import Head from 'next/head';
+import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import styles from '../styles/Home.module.css';
 
-const esquadLogoSrc = "/squat.png";
+const esquadLogoSrc = '/squat.png';
 
 export default function Home() {
   const [squads, setSquads] = useState([]);
+
+  const buildSquads = async (teamsText) => {
+    const teamsSeparated = teamsText.split('\n');
+
+    const requestOptions = {
+      body: JSON.stringify({
+        teams: teamsSeparated,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    };
+
+    const resFromServer = await fetch('/api/squad', requestOptions);
+
+    setSquads(resFromServer.json());
+
+    return false;
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('inside handleSubmit');
+    buildSquads(event.target.teams.value.trim());
+  };
+
+  console.log(`squads: ${squads}`);
 
   return (
     <div className={styles.container}>
@@ -30,8 +59,8 @@ export default function Home() {
           Organiza squads para demos y retros fácilmente
         </p>
 
-        <div id="teamsForm"className={styles.grid}>
-          <TeamsForm />
+        <div id="teamsForm" className={styles.grid}>
+          <TeamsForm handleSubmit={handleSubmit} />
         </div>
       </main>
 
@@ -41,7 +70,8 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
+          Powered by
+          {' '}
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer>
@@ -49,35 +79,8 @@ export default function Home() {
   );
 }
 
-const TeamsForm = () => {
-  useEffect(() => {
-    buildSquads()
-  }, []);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    buildSquads(event.target.teams.value.trim());
-  };
-
-  const buildSquads = async (teamsText) => {
-    const teamsSeparated = teamsText.split("\n");
-
-    const requestOptions = {
-      body: JSON.stringify({
-        teams: teamsSeparated,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    };
-
-    const resFromServer = await fetch("/api/squad", requestOptions);
-
-    setSquads(resFromServer.json());
-
-    return false;
-  };
+const TeamsForm = ({ handleSubmit }) => {
+  console.log('inside form creation');
 
   return (
     <form onSubmit={handleSubmit}>
@@ -92,4 +95,8 @@ const TeamsForm = () => {
       </div>
     </form>
   );
+};
+
+TeamsForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
 };

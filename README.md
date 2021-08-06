@@ -4,6 +4,7 @@
 
 ## Improvements
 
+- [x] Add pipeline config to run tests
 - [ ] Properly render squads
 - [ ] Add formatting to squads with 'champion' space
 - [ ] Re-build squads arrangement algorithm from scratch

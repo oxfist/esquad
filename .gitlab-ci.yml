@@ -26,7 +26,7 @@ deploy-to-vercel:
   image: node:14-alpine
 
   variables:
-    PREVIEW_URL: $CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG.$VERCEL_SCOPE.vercel.app
+    PREVIEW_URL: $CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG.$VERCEL_USER.vercel.app
 
   rules:
     - if: $CI_MERGE_REQUEST_IID
@@ -39,5 +39,5 @@ deploy-to-vercel:
 
   script:
     - npm i -g vercel
-    - DEPLOYMENT_URL=$(vercel --name $CI_PROJECT_NAME --confirm -t $VERCEL_TOKEN --scope $VERCEL_SCOPE)
-    - vercel alias set $DEPLOYMENT_URL $PREVIEW_URL -t $VERCEL_TOKEN --scope $VERCEL_SCOP
+    - DEPLOYMENT_URL=$(vercel --name $CI_PROJECT_NAME --confirm -t $VERCEL_TOKEN --scope $VERCEL_USER)
+    - vercel alias set $DEPLOYMENT_URL $PREVIEW_URL -t $VERCEL_TOKEN --scope $VERCEL_USER

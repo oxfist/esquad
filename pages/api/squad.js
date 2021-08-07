@@ -1,15 +1,21 @@
 const totalSquads = 4;
 
-export default function handler(req, res) {
-  const squads = buildSquads(req.body.teams);
-  console.info(squads);
+const shuffleArray = (array) => {
+  const arrayCopy = array.slice();
 
-  res.status(200).json({
-    body: {
-      squads,
-    },
-  });
-}
+  let i = 0;
+  let j = 0;
+  let temp = null;
+
+  for (i = arrayCopy.length - 1; i > 0; i -= 1) {
+    j = Math.floor(Math.random() * (i + 1));
+    temp = arrayCopy[i];
+    arrayCopy[i] = arrayCopy[j];
+    arrayCopy[j] = temp;
+  }
+
+  return arrayCopy;
+};
 
 // TODO: delete all and code again with TDD
 const buildSquads = (teams) => {
@@ -33,19 +39,13 @@ const buildSquads = (teams) => {
   return squads;
 };
 
-const shuffleArray = (array) => {
-  const arrayCopy = array.slice();
+export default function handler(req, res) {
+  const squads = buildSquads(req.body.teams);
+  console.info(squads);
 
-  let i = 0;
-  let j = 0;
-  let temp = null;
-
-  for (i = arrayCopy.length - 1; i > 0; i -= 1) {
-    j = Math.floor(Math.random() * (i + 1));
-    temp = arrayCopy[i];
-    arrayCopy[i] = arrayCopy[j];
-    arrayCopy[j] = temp;
-  }
-
-  return arrayCopy;
-};
+  res.status(200).json({
+    body: {
+      squads,
+    },
+  });
+}

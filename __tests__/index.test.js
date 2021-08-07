@@ -7,7 +7,7 @@ describe('App', () => {
   it('render without crashing', () => {
     render(<App />);
     expect(
-      screen.getByRole('heading', { name: mainHeading }),
+      screen.getByRole('heading', { name: mainHeading })
     ).toBeInTheDocument();
   });
 });

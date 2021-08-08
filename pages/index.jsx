@@ -3,8 +3,8 @@ import Image from 'next/image';
 import { useState } from 'react';
 import styles from '../styles/Home.module.css';
 
-import TeamsForm from '../components/teamsForm';
-import SquadsList from '../components/squadsList';
+import TeamsForm from '../components/TeamsForm';
+import SquadsList from '../components/SquadsList';
 
 const esquadLogoSrc = '/squat.png';
 

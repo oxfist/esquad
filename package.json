@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "lint": "eslint . && prettier -c .",
     "build": "next build",
     "start": "next start",
     "test": "jest"

@@ -22,7 +22,7 @@ describe('/api/squad', () => {
     expect(actualSquads[0].teams.length).toBeGreaterThan(0);
   });
 
-  it('responds with an empty array when there are no teams', () => {
+  it('responds with empty array when there are no teams', () => {
     const noTeams = [];
     const { req, res } = createMocks({
       method: 'POST',

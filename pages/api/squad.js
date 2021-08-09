@@ -17,15 +17,17 @@ const shuffleArray = (array) => {
   return arrayCopy;
 };
 
-// TODO: delete all and code again with TDD
 const buildSquads = (teams) => {
-  const shuffledTeams = shuffleArray(teams);
+  if (teams.length === 0) return [];
+
   const squads = [
     { name: 'Squad 1', teams: [] },
     { name: 'Squad 2', teams: [] },
     { name: 'Squad 3', teams: [] },
     { name: 'Squad 4', teams: [] },
   ];
+
+  const shuffledTeams = shuffleArray(teams);
 
   let assignedSquad = 0;
   shuffledTeams.forEach((team) => {
@@ -39,9 +41,9 @@ const buildSquads = (teams) => {
   return squads;
 };
 
-export default function handler(req, res) {
-  const squads = buildSquads(req.body.teams);
-  console.info(squads);
+export default function handleSquads(req, res) {
+  const { teams } = req.body;
+  const squads = buildSquads(teams);
 
   res.status(200).json({
     body: {

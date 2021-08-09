@@ -22,6 +22,10 @@
   },
   "plugins": ["react"],
   "rules": {
+    "no-underscore-dangle": [
+      "error",
+      { "allow": ["_getStatusCode", "_getJSONData"] }
+    ],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "react/react-in-jsx-scope": "off"
   }

@@ -5,13 +5,27 @@ export default function SquadsList({ squads }) {
   if (squads.length === 0) return <></>;
 
   return (
-    <ul>
+    <div>
       {squads.map((squad) => (
-        <li key={squad.name}>
-          <strong>{squad.name}</strong>
-        </li>
+        <div className="squadGroup" key={squad.name}>
+          <span className="squadName" key={squad.name}>
+            <strong>{squad.name}:</strong>
+          </span>
+          <div className="teamsGroup">
+            {squad.teams.map((team) => (
+              <div className="singleTeam" key={team}>
+                <span key={team}>{team}</span>
+                <br />
+              </div>
+            ))}
+          </div>
+          <div>
+            <strong>Capitana:</strong>
+          </div>
+          <br />
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }
 

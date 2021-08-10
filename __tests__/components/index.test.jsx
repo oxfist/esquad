@@ -4,7 +4,7 @@ import App from '../../pages/index';
 const mainHeading = 'Esquad Icon of person performing a squat';
 
 describe('App', () => {
-  it('render without crashing', () => {
+  it('renders without crashing', () => {
     render(<App />);
     expect(
       screen.getByRole('heading', { name: mainHeading })

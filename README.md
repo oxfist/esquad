@@ -5,10 +5,12 @@
 ## Improvements
 
 - [x] Add pipeline config to run tests
-- [ ] Properly render squads
-- [ ] Add formatting to squads with 'champion' space
-- [ ] Re-build squads arrangement algorithm from scratch
+- [x] Properly render squads
+- [x] Add formatting to squads with 'champion' space
+- [ ] Extract squads arrangement algorithm and re-build with TDD
+- [ ] Add selection of champion for each squad
 - [ ] Add option to keep two people in separate squads
+- [ ] Add CSS
 
 ## How do I run this app?
 

@@ -7,7 +7,7 @@
 - [x] Add pipeline config to run tests
 - [x] Properly render squads
 - [x] Add formatting to squads with 'champion' space
-- [ ] Extract squads arrangement algorithm and re-build with TDD
+- [x] Extract squads arrangement algorithm and re-build with TDD
 - [ ] Add selection of champion for each squad
 - [ ] Add option to keep two people in separate squads
 - [ ] Add CSS

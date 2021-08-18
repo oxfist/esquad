@@ -9,8 +9,10 @@
 - [x] Add formatting to squads with 'champion' space
 - [x] Extract squads arrangement algorithm and re-build with TDD
 - [x] Add selection of champion for each squad
+- [ ] Upgrade to Next.js 11
 - [ ] Add option to keep two people in separate squads
-- [ ] Add CSS
+- [ ] Add CSS (Chakra UI vs Tailwind CSS)
+- [ ] Add selection of absents to exclude from squad building
 
 ## How do I run this app?
 

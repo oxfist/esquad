@@ -45,4 +45,24 @@ describe('build', () => {
 
     expect(actualSquads).toHaveLength(0);
   });
+
+  it('returns a captain for each squad from one of the teams', () => {
+    const fakeTeams = ['1'];
+    const expectedCaptain = fakeTeams[0];
+
+    const actualSquads = builder.build(fakeTeams);
+
+    expect(actualSquads[0].captain).not.toBeUndefined();
+    expect(actualSquads[0].captain).not.toBeNull();
+    expect(actualSquads[0].captain).toEqual(expectedCaptain);
+  });
+
+  it('returns a captain from a team of several people separated by a -', () => {
+    const fakeTeams = ['1 - 2'];
+    const fakeTeamPeople = ['1', '2'];
+
+    const actualSquads = builder.build(fakeTeams);
+
+    expect(fakeTeamPeople).toContain(actualSquads[0].captain);
+  });
 });

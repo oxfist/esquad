@@ -30,12 +30,14 @@ describe('SquadsList', () => {
     expect(actualTeams).toHaveLength(3);
   });
 
-  it('renders a squad with a slot for captain in bold', () => {
-    const singleSquad = [{ name: 'Squad 1', teams: ['1', '2', '3'] }];
+  it('renders a squad with a captain in bold', () => {
+    const singleSquad = [
+      { name: 'Squad 1', teams: ['1', '2', '3'], captain: '1' },
+    ];
 
     render(<SquadsList squads={singleSquad} />);
 
-    const captainText = screen.getByText('Capitana:');
+    const captainText = screen.getByText('Capitana: 1');
 
     expect(captainText).toBeInTheDocument();
     expect(captainText).toHaveStyle({ 'font-weight': 'bold' });

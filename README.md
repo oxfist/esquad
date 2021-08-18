@@ -8,7 +8,7 @@
 - [x] Properly render squads
 - [x] Add formatting to squads with 'champion' space
 - [x] Extract squads arrangement algorithm and re-build with TDD
-- [ ] Add selection of champion for each squad
+- [x] Add selection of champion for each squad
 - [ ] Add option to keep two people in separate squads
 - [ ] Add CSS
 

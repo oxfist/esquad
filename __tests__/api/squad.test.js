@@ -1,8 +1,8 @@
 import { createMocks } from 'node-mocks-http';
 import handleSquads from '../../pages/api/squad';
 
+const FOUR_SQUADS = 4;
 const OK = 200;
-const squadAmount = 4;
 
 describe('/api/squad', () => {
   it('responds with an array of squads containing teams', () => {
@@ -18,7 +18,7 @@ describe('/api/squad', () => {
 
     const actualSquads = res._getJSONData().body.squads;
     expect(res._getStatusCode()).toBe(OK);
-    expect(actualSquads).toHaveLength(squadAmount);
+    expect(actualSquads).toHaveLength(FOUR_SQUADS);
     expect(actualSquads[0].teams.length).toBeGreaterThan(0);
   });
 
@@ -37,7 +37,7 @@ describe('/api/squad', () => {
     expect(res._getJSONData().body.squads).toHaveLength(0);
   });
 
-  it('responds with an object with name and teams for each squad', () => {
+  it('responds with an object with name, teams, and captain for each squad', () => {
     const fakeTeams = ['1', '2', '3', '4', '5', '6'];
     const { req, res } = createMocks({
       method: 'POST',
@@ -54,6 +54,7 @@ describe('/api/squad', () => {
         expect.objectContaining({
           name: 'Squad 4',
           teams: expect.any(Array),
+          captain: expect.any(String),
         }),
       ])
     );

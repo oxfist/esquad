@@ -20,7 +20,7 @@ export default function SquadsList({ squads }) {
             ))}
           </div>
           <div>
-            <strong>Capitana:</strong>
+            <strong>Capitana: {squad.captain}</strong>
           </div>
           <br />
         </div>

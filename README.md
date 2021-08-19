@@ -1,4 +1,4 @@
-# Esquad
+# Esquad &middot; [![pipeline status](https://gitlab.com/oxfist/esquad/badges/main/pipeline.svg)](https://gitlab.com/oxfist/esquad/-/commits/main)
 
 ![Icon of person performing a squat](./public/squat.png)
 

@@ -7,17 +7,20 @@
   },
   "extends": [
     "airbnb",
+    "eslint:recommended",
+    "plugin:@next/next/recommended",
     "plugin:md/prettier",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
-    "prettier"
+    "prettier",
+    "next"
   ],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 12,
+    "ecmaVersion": 14,
     "sourceType": "module"
   },
   "plugins": ["react"],
@@ -27,6 +30,6 @@
       { "allow": ["_getStatusCode", "_getJSONData"] }
     ],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
-    "react/react-in-jsx-scope": "off"
+    "react/jsx-props-no-spreading": 0
   }
 }

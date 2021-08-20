@@ -4,17 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "lint": "eslint . && prettier -c .",
+    "lint": "next lint && prettier -c .",
     "build": "next build",
     "start": "next start",
     "test": "jest",
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "next": "10.x",
+    "next": "^11.1.0",
     "prop-types": "^15.7.2",
-    "react": "17.x",
-    "react-dom": "17.x"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.14.1",
@@ -22,6 +22,7 @@
     "babel-jest": "^27.0.6",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-next": "^11.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",

@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import App from '../../pages/index';
+import EsquadHeader from '../../components/EsquadHeader';
 
 const MAIN_HEADING = /Esquad/i;
 
-describe('App', () => {
-  it('renders without crashing', () => {
-    render(<App />);
+describe('EsquadHeader', () => {
+  it('renders Esquad header', () => {
+    render(<EsquadHeader />);
 
     expect(
       screen.getByRole('heading', { name: MAIN_HEADING })

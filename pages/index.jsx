@@ -63,7 +63,7 @@ export default function Home() {
             id={styles.teamsForm}
             direction="column"
             alignItems="center"
-            pt={8}
+            pt={squads.length > 0 ? 8 : 24}
           >
             <TeamsForm handleSubmit={handleSubmit} />
             <SquadsList squads={squads} />

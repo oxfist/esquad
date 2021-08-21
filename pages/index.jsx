@@ -39,12 +39,11 @@ export default function Home() {
   return (
     <Flex
       height="100vh"
-      alignItems="center"
       justifyContent="center"
       padding="0 0.5rem"
-      background="#f4b9b8"
+      background="white"
     >
-      <Flex direction="column" p={14} rounded={6}>
+      <Flex direction="column" p={[6, 0]} rounded={6}>
         <Head>
           <title>Esquad</title>
           <link rel="icon" href="/favicon.ico" />

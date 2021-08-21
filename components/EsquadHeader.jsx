@@ -6,7 +6,7 @@ const esquadLogoSrc = '/squat.png';
 
 export default function EsquadHeader() {
   return (
-    <Heading className={styles.title}>
+    <Heading as="h1" size="4xl" className={styles.title}>
       <span>Esquad</span>
       <Image
         src={esquadLogoSrc}

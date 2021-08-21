@@ -10,9 +10,10 @@
 - [x] Extract squads arrangement algorithm and re-build with TDD
 - [x] Add selection of champion for each squad
 - [x] Upgrade to Next.js 11
+- [x] Add CSS style with Chakra UI (tag)
 - [ ] Add option to keep two people in separate squads
-- [ ] Add CSS (Chakra UI vs Tailwind CSS)
 - [ ] Add selection of absents to exclude from squad building
+- [ ] Add CSS style with Tailwind CSS (tag)
 
 ## How do I run this app?
 

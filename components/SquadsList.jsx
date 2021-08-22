@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Box } from '@chakra-ui/react';
 
 export default function SquadsList({ squads }) {
   if (squads.length === 0) return <></>;
 
   return (
-    <div>
+    <Box maxHeight="80" width="md" overflowY="scroll">
       {squads.map((squad) => (
         <div className="squadGroup" key={squad.name}>
           <span className="squadName" key={squad.name}>
@@ -25,7 +26,7 @@ export default function SquadsList({ squads }) {
           <br />
         </div>
       ))}
-    </div>
+    </Box>
   );
 }
 

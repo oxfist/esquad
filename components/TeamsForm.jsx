@@ -1,27 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Box, Button, Textarea } from '@chakra-ui/react';
+
 import styles from '../styles/Home.module.css';
 
 export default function TeamsForm({ handleSubmit }) {
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="teams">
-          Equipos (duplas/tríos/persona)
-          <div>
-            <textarea
-              id="teams"
-              className={styles.textInput}
-              required
-              aria-required
-            />
-          </div>
-        </label>
-      </div>
-      <div>
-        <button type="submit">Formar squads</button>
-      </div>
-    </form>
+    <Box pb={5}>
+      <form onSubmit={handleSubmit}>
+        <Box pb={5}>
+          <Textarea
+            width="xl"
+            height="48"
+            id="teams"
+            className={styles.textInput}
+            placeholder="Pon aquí una línea por equipo o persona"
+            required
+            aria-required
+          />
+        </Box>
+        <Button colorScheme="purple" type="submit">
+          Crear squads
+        </Button>
+      </form>
+    </Box>
   );
 }
 

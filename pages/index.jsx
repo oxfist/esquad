@@ -1,12 +1,13 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
+import { Flex, Spacer, Text } from '@chakra-ui/react';
+
 import styles from '../styles/Home.module.css';
 
 import TeamsForm from '../components/TeamsForm';
 import SquadsList from '../components/SquadsList';
-
-const esquadLogoSrc = '/squat.png';
+import EsquadHeader from '../components/EsquadHeader';
 
 export default function Home() {
   const [squads, setSquads] = useState([]);
@@ -36,43 +37,55 @@ export default function Home() {
   };
 
   return (
-    <div className={styles.container}>
+    <Flex
+      id="pageContainer"
+      direction="column"
+      height="100vh"
+      justifyContent="space-between"
+      alignItems="stretch"
+      p="0 1.5rem"
+      background="white"
+    >
       <Head>
         <title>Esquad</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          <span>Esquad</span>
-          <Image
-            src={esquadLogoSrc}
-            alt="Icon of person performing a squat"
-            width={64}
-            height={64}
-          />
-        </h1>
+      <Flex direction="column" height="100vh">
+        <Flex as="main" className={styles.main} justifyContent="start">
+          <EsquadHeader />
 
-        <p className={styles.description}>
-          Organiza squads para demos y retros fácilmente
-        </p>
+          <Text fontSize="md">
+            Organiza squads para demos y retros fácilmente
+          </Text>
 
-        <div id={styles.teamsForm} className={styles.grid}>
-          <TeamsForm handleSubmit={handleSubmit} />
-          <SquadsList squads={squads} />
-        </div>
-      </main>
-
+          <Flex
+            id={styles.teamsForm}
+            direction="column"
+            alignItems="center"
+            pt={squads.length > 0 ? 8 : 24}
+          >
+            <TeamsForm handleSubmit={handleSubmit} />
+            <SquadsList squads={squads} />
+          </Flex>
+        </Flex>
+      </Flex>
       <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
+          Powered by <Spacer p={0.5} />
+          <Image
+            src="/vercel.svg"
+            alt="Vercel Logo"
+            className={styles.logo}
+            width={70.75}
+            height={16}
+          />
         </a>
       </footer>
-    </div>
+    </Flex>
   );
 }

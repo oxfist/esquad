@@ -11,6 +11,7 @@
 - [x] Add selection of champion for each squad
 - [x] Upgrade to Next.js 11
 - [x] Add CSS style with Chakra UI (tag)
+- [ ] Add option to select number of squads to build
 - [ ] Add option to keep two people in separate squads
 - [ ] Add selection of absents to exclude from squad building
 - [ ] Add CSS style with Tailwind CSS (tag)

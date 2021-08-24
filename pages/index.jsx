@@ -12,12 +12,10 @@ import EsquadHeader from '../components/EsquadHeader';
 export default function Home() {
   const [squads, setSquads] = useState([]);
 
-  const buildSquads = async (teamsText) => {
-    const teamsSeparated = teamsText.split('\n');
-
+  const buildSquads = async (teams) => {
     const requestOptions = {
       body: JSON.stringify({
-        teams: teamsSeparated,
+        teams,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -32,9 +30,17 @@ export default function Home() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const newSquads = await buildSquads(event.target.teams.value.trim());
+    const splitTeams = event.target.teams.value.trim().split('\n');
+    const newSquads = await buildSquads(splitTeams);
     setSquads(newSquads.body.squads);
   };
+
+  const teamsSize =
+    squads.length > 0
+      ? squads
+          .map((squad) => squad.teams.length)
+          .reduce((acc, current) => acc + current)
+      : 0;
 
   return (
     <Flex
@@ -65,7 +71,7 @@ export default function Home() {
             alignItems="center"
             pt={squads.length > 0 ? 8 : 24}
           >
-            <TeamsForm handleSubmit={handleSubmit} />
+            <TeamsForm handleSubmit={handleSubmit} teamsSize={teamsSize} />
             <SquadsList squads={squads} />
           </Flex>
         </Flex>

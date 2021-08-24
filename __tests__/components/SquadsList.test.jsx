@@ -23,11 +23,11 @@ describe('SquadsList', () => {
     render(<SquadsList squads={singleSquad} />);
 
     const actualSquadTitle = screen.getByText('Squad 1:', { exact: false });
-    const actualTeams = screen.getAllByText('Equipo', { exact: false });
+    const actualTeamsAmount = screen.getAllByText(/Equipo [1-3]/).length;
 
     expect(actualSquadTitle).toBeInTheDocument();
     expect(actualSquadTitle).toHaveStyle({ 'font-weight': 'bold' });
-    expect(actualTeams).toHaveLength(3);
+    expect(actualTeamsAmount).toEqual(3);
   });
 
   it('renders a squad with a captain in bold', () => {

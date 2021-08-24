@@ -1,10 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Button, Textarea } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Center,
+  Flex,
+  Text,
+  Textarea,
+  Spacer,
+} from '@chakra-ui/react';
 
 import styles from '../styles/Home.module.css';
 
-export default function TeamsForm({ handleSubmit }) {
+export default function TeamsForm({ handleSubmit, teamsSize }) {
   return (
     <Box pb={5}>
       <form onSubmit={handleSubmit}>
@@ -19,9 +27,21 @@ export default function TeamsForm({ handleSubmit }) {
             aria-required
           />
         </Box>
-        <Button colorScheme="purple" type="submit">
-          Crear squads
-        </Button>
+        <Flex>
+          <Button colorScheme="purple" type="submit">
+            Crear squads
+          </Button>
+          {teamsSize > 0 && (
+            <>
+              <Spacer />
+              <Center>
+                <Text justifyContent="center" fontSize="sm">
+                  {teamsSize} equipos/personas
+                </Text>
+              </Center>
+            </>
+          )}{' '}
+        </Flex>
       </form>
     </Box>
   );
@@ -29,4 +49,5 @@ export default function TeamsForm({ handleSubmit }) {
 
 TeamsForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  teamsSize: PropTypes.number.isRequired,
 };

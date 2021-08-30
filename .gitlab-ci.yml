@@ -17,9 +17,9 @@ install-dependencies:
     paths:
       - node_modules/
 
-unit-tests:
+unit-tests-with-coverage:
   stage: prepare
-  script: npm test
+  script: npm run test:coverage
 
 lint:
   stage: prepare

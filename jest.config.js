@@ -9,13 +9,14 @@ module.exports = {
     'jest.config.js',
     'config/jest',
     'coverage',
+    './pages/_app.jsx',
   ],
   coverageThreshold: {
     global: {
-      statements: 55,
-      branches: 66,
-      functions: 50,
-      lines: 52,
+      statements: 85,
+      branches: 76,
+      functions: 77,
+      lines: 84,
     },
   },
   setupFilesAfterEnv: ['<rootDir>/setupTests.js/'],

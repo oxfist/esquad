@@ -1,8 +1,8 @@
 import builder from '../../lib/squadBuilder';
 
 export default function handleSquads(req, res) {
-  const { teams } = req.body;
-  const squads = builder.build(teams);
+  const { teams, squadAmount } = req.body;
+  const squads = builder.build(teams, squadAmount);
 
   res.status(200).json({
     body: {

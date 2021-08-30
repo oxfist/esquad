@@ -12,10 +12,11 @@ import EsquadHeader from '../components/EsquadHeader';
 export default function Home() {
   const [squads, setSquads] = useState([]);
 
-  const buildSquads = async (teams) => {
+  const buildSquads = async (teams, squadAmount) => {
     const requestOptions = {
       body: JSON.stringify({
         teams,
+        squadAmount,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -31,7 +32,8 @@ export default function Home() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const splitTeams = event.target.teams.value.trim().split('\n');
-    const newSquads = await buildSquads(splitTeams);
+    const squadAmount = event.target.squadAmount.value;
+    const newSquads = await buildSquads(splitTeams, squadAmount);
     setSquads(newSquads.body.squads);
   };
 

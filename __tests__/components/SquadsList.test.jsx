@@ -2,17 +2,29 @@ import { render, screen } from '@testing-library/react';
 import SquadsList from '../../components/SquadsList';
 
 describe('SquadsList', () => {
-  it('renders the squads', () => {
+  it('renders four squads', () => {
     const squads = [
-      { name: 'Squad 1', teams: ['1', '2', '3'] },
-      { name: 'Squad 2', teams: ['4', '5', '6'] },
-      { name: 'Squad 3', teams: ['7', '8', '9'] },
-      { name: 'Squad 4', teams: ['10', '11', '12'] },
+      { name: 'Squad 1', teams: ['Violeta', 'Susan', 'Silvia'] },
+      { name: 'Squad 2', teams: ['Ada', 'Alexandra', 'Rosa'] },
+      { name: 'Squad 3', teams: ['bell', 'Angela', 'Simone'] },
+      { name: 'Squad 4', teams: ['Andrea', 'Audre', 'Marta'] },
     ];
 
     render(<SquadsList squads={squads} />);
 
     expect(screen.getAllByText('Squad', { exact: false })).toHaveLength(4);
+  });
+
+  it('renders three squads', () => {
+    const squads = [
+      { name: 'Squad 1', teams: ['1', '2', '3'] },
+      { name: 'Squad 2', teams: ['4', '5', '6'] },
+      { name: 'Squad 3', teams: ['7', '8', '9'] },
+    ];
+
+    render(<SquadsList squads={squads} />);
+
+    expect(screen.getAllByText('Squad', { exact: false })).toHaveLength(3);
   });
 
   it('renders a squad with its name in bold followed by the teams', () => {

@@ -5,7 +5,7 @@ const FOUR_SQUADS = 4;
 const OK = 200;
 
 describe('/api/squad', () => {
-  it('responds with an array of squads containing teams', () => {
+  it('responds with an array of four squads containing teams', () => {
     const fakeTeams = ['1', '2', '3', '4', '5', '6'];
     const { req, res } = createMocks({
       method: 'POST',
@@ -19,6 +19,25 @@ describe('/api/squad', () => {
     const actualSquads = res._getJSONData().body.squads;
     expect(res._getStatusCode()).toBe(OK);
     expect(actualSquads).toHaveLength(FOUR_SQUADS);
+    expect(actualSquads[0].teams.length).toBeGreaterThan(0);
+  });
+
+  it('responds with an array of specified squads when squad amount is specified', () => {
+    const fakeTeams = ['1', '2', '3', '4', '5', '6'];
+    const expectedSquadAmount = 3;
+    const { req, res } = createMocks({
+      method: 'POST',
+      body: {
+        teams: fakeTeams,
+        squadAmount: expectedSquadAmount,
+      },
+    });
+
+    handleSquads(req, res);
+
+    const actualSquads = res._getJSONData().body.squads;
+    expect(res._getStatusCode()).toBe(OK);
+    expect(actualSquads).toHaveLength(expectedSquadAmount);
     expect(actualSquads[0].teams.length).toBeGreaterThan(0);
   });
 

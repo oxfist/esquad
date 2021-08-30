@@ -3,7 +3,7 @@ import builder from '../lib/squadBuilder';
 const FOUR_SQUADS = 4;
 
 describe('build', () => {
-  it('returns four squads', () => {
+  it('returns four squads when amount is not specified', () => {
     const fakeTeams = ['1', '2', '3', '4'];
 
     const actualSquads = builder.build(fakeTeams);
@@ -11,13 +11,21 @@ describe('build', () => {
     expect(actualSquads).toHaveLength(FOUR_SQUADS);
   });
 
-  it('returns four squads with teams', () => {
+  it('returns specified squads amount when amount is specified', () => {
+    const fakeTeams = ['1', '2', '3', '4', '5'];
+    const threeSquads = 3;
+
+    const actualSquads = builder.build(fakeTeams, threeSquads);
+
+    expect(actualSquads).toHaveLength(threeSquads);
+  });
+
+  it('returns squads with teams', () => {
     const fakeTeams = ['1', '2', '3', '4', '5', '6'];
 
     const actualSquads = builder.build(fakeTeams);
     const firstSquad = actualSquads[0];
 
-    expect(actualSquads).toHaveLength(FOUR_SQUADS);
     expect(firstSquad.teams.length).toBeGreaterThan(0);
   });
 
@@ -30,7 +38,7 @@ describe('build', () => {
     expect(secondSquads).not.toEqual(firstSquads);
   });
 
-  it('returns four squads when teams are less than squads', () => {
+  it('returns default squad amount when teams are less than squads', () => {
     const fakeTeams = ['1', '2', '3'];
 
     const actualSquads = builder.build(fakeTeams);
@@ -51,10 +59,11 @@ describe('build', () => {
     const expectedCaptain = fakeTeams[0];
 
     const actualSquads = builder.build(fakeTeams);
+    const actualFirstCaptain = actualSquads[0].captain;
 
-    expect(actualSquads[0].captain).not.toBeUndefined();
-    expect(actualSquads[0].captain).not.toBeNull();
-    expect(actualSquads[0].captain).toEqual(expectedCaptain);
+    expect(actualFirstCaptain).not.toBeUndefined();
+    expect(actualFirstCaptain).not.toBeNull();
+    expect(actualFirstCaptain).toEqual(expectedCaptain);
   });
 
   it('returns a captain from a team of several people separated by a -', () => {

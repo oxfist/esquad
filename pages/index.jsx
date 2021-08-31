@@ -56,7 +56,7 @@ export default function Home() {
     >
       <Head>
         <title>Esquad</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/squat.png" />
       </Head>
 
       <Flex direction="column" height="100vh">

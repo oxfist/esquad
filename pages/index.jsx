@@ -9,6 +9,14 @@ import TeamsForm from '../components/TeamsForm';
 import SquadsList from '../components/SquadsList';
 import EsquadHeader from '../components/EsquadHeader';
 
+const getTeamsAmount = (squads) => {
+  return squads.length > 0
+    ? squads
+        .map((squad) => squad.teams.length)
+        .reduce((acc, current) => acc + current)
+    : 0;
+};
+
 export default function Home() {
   const [squads, setSquads] = useState([]);
 
@@ -37,12 +45,7 @@ export default function Home() {
     setSquads(newSquads.body.squads);
   };
 
-  const teamsSize =
-    squads.length > 0
-      ? squads
-          .map((squad) => squad.teams.length)
-          .reduce((acc, current) => acc + current)
-      : 0;
+  const teamsSize = getTeamsAmount(squads);
 
   return (
     <Flex
@@ -69,11 +72,12 @@ export default function Home() {
 
           <Flex
             id={styles.teamsForm}
-            direction="column"
+            direction="row"
             alignItems="center"
-            pt={squads.length > 0 ? 8 : 24}
+            pt={24}
           >
             <TeamsForm handleSubmit={handleSubmit} teamsSize={teamsSize} />
+            <Spacer p={3} />
             <SquadsList squads={squads} />
           </Flex>
         </Flex>

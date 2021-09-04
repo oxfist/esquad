@@ -18,17 +18,17 @@ import {
 
 export default function TeamsForm({ handleSubmit, teamsSize }) {
   return (
-    <Box pb={5}>
+    <Box>
       <form onSubmit={handleSubmit}>
-        <Box pb={5} width="xl">
+        <Box width="xl">
           <Textarea
-            height="48"
+            height="80"
             id="teams"
             placeholder="Pon aquí una línea por equipo o persona"
             required
             aria-required
           />
-          <FormControl id="squadAmount" mt={5}>
+          <FormControl id="squadAmount" mt={3}>
             <FormControl>Cantidad de squads</FormControl>
             <NumberInput defaultValue={4} size="sm" maxW={20}>
               <NumberInputField />
@@ -39,17 +39,15 @@ export default function TeamsForm({ handleSubmit, teamsSize }) {
             </NumberInput>
           </FormControl>
         </Box>
-        <Flex>
+        <Flex pt={5}>
           <Button colorScheme="purple" type="submit">
-            Crear squads
+            Generar squads
           </Button>
           {teamsSize > 0 && (
             <>
               <Spacer />
               <Center>
-                <Text justifyContent="center" fontSize="sm">
-                  {teamsSize} equipos/personas
-                </Text>
+                <Text fontSize="sm">{teamsSize} equipos/personas</Text>
               </Center>
             </>
           )}{' '}

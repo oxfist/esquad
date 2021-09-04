@@ -12,6 +12,7 @@
 - [x] Upgrade to Next.js 11
 - [x] Add CSS style with Chakra UI (tag)
 - [x] Add option to select number of squads to build
+- [ ] Add button to copy generated squads to clipboard
 - [ ] Add option to keep two people in separate squads
 - [ ] Add selection of absents to exclude from squad building
 - [ ] Add CSS style with Tailwind CSS (tag)

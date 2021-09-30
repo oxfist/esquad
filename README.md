@@ -34,7 +34,16 @@ npm run dev
 
 You should see something like this:
 
-![Screenshot of `next dev` command](./docs/images/next-dev.png)
+```sh
+$ npm run dev
+
+> nextjs@0.1.0 dev
+> next dev
+
+ready - started server on 0.0.0.0:3000, url: http://localhost:3000
+info  - Using webpack 5. Reason: Enabled by default https://nextjs.org/docs/messages/webpack5
+event - compiled successfully
+```
 
 Open <http://localhost:3000> with your browser to see the result.
 

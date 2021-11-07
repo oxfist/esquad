@@ -4,7 +4,12 @@ import { Box } from '@chakra-ui/react';
 
 export default function SquadsList({ squads }) {
   return (
-    <Box height="md" width="md" overflowY="scroll" background="#f6f6f6">
+    <Box
+      height="md"
+      width="md"
+      overflowY={squads.length > 0 ? 'scroll' : 'clip'}
+      background="#f6f6f6"
+    >
       {squads.map((squad) => (
         <Box p={3} className="squadGroup" key={squad.name}>
           <span className="squadName" key={squad.name}>

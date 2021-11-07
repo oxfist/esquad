@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,900&display=swap');
+
 .main {
   padding: 3rem 0;
   flex: 1;
@@ -47,6 +49,10 @@
 .title,
 .description {
   text-align: center;
+}
+
+.esquadTitle {
+  font-family: 'Playfair Display', serif;
 }
 
 .code {

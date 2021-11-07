@@ -8,7 +8,9 @@ export default function EsquadHeader() {
   return (
     <Heading as="h1" size="4xl" pt={2} pb={3} className={styles.title}>
       <Flex alignItems="center">
-        <Text as="span">Esquad</Text>
+        <Text as="span" className={styles.esquadTitle}>
+          Esquad
+        </Text>
         <Image
           src={esquadLogoSrc}
           alt="Icon of person performing a squat"

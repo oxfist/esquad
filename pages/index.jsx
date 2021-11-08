@@ -60,6 +60,12 @@ export default function Home() {
       <Head>
         <title>Esquad</title>
         <link rel="icon" href="/squat.png" />
+        <script
+          async
+          defer
+          data-website-id="6723b37e-6b99-4618-807a-226f44de1729"
+          src="https://esquad-analytics.herokuapp.com/umami.js"
+        />
       </Head>
 
       <Flex direction="column" height="100vh">

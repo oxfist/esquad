@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box } from '@chakra-ui/react';
+import { Box, Button } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy } from '@fortawesome/free-solid-svg-icons';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 function Squad({ squadData }) {
   return (
@@ -35,7 +35,7 @@ export default function SquadsList({ squads }) {
       background="#f6f6f6"
     >
       <Box>
-        <FontAwesomeIcon icon={faCopy} />
+        <FontAwesomeIcon icon={solid('copy')} size="sm" />
       </Box>
       {squads.map((squad) => (
         <Squad key={squad.name} squadData={squad} />

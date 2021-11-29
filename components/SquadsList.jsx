@@ -34,9 +34,17 @@ export default function SquadsList({ squads }) {
       overflowY={squads.length > 0 ? 'scroll' : 'clip'}
       background="#f6f6f6"
     >
-      <Box>
-        <FontAwesomeIcon icon={solid('copy')} size="sm" />
-      </Box>
+      {squads.length > 0 && (
+        <Box float="right">
+          <Button
+            variant="outline"
+            colorScheme="purple"
+            aria-label="Copy to clipboard"
+          >
+            <FontAwesomeIcon icon={solid('copy')} height="20px" />
+          </Button>
+        </Box>
+      )}
       {squads.map((squad) => (
         <Squad key={squad.name} squadData={squad} />
       ))}

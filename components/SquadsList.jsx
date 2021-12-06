@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Button } from '@chakra-ui/react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { Box } from '@chakra-ui/react';
 
-function Squad({ squadData }) {
+import CopyToClipboardButton from './CopyToClipboardButton';
+
+function Squads({ data }) {
+  return data.map((squad) => <Squad key={squad.name} squadData={squad} />);
+}
+
+export function Squad({ squadData }) {
   return (
     <Box p={3} className="squadGroup">
       <span className="squadName">
@@ -35,19 +39,9 @@ export default function SquadsList({ squads }) {
       background="#f6f6f6"
     >
       {squads.length > 0 && (
-        <Box float="right">
-          <Button
-            variant="outline"
-            colorScheme="purple"
-            aria-label="Copy to clipboard"
-          >
-            <FontAwesomeIcon icon={solid('copy')} height="20px" />
-          </Button>
-        </Box>
+        <CopyToClipboardButton squadsComponent={<Squads data={squads} />} />
       )}
-      {squads.map((squad) => (
-        <Squad key={squad.name} squadData={squad} />
-      ))}
+      <Squads data={squads} />
     </Box>
   );
 }

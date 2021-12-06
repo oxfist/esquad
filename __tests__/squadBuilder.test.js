@@ -29,15 +29,6 @@ describe('build', () => {
     expect(firstSquad.teams.length).toBeGreaterThan(0);
   });
 
-  it('returns shuffled squads each time', () => {
-    const fakeTeams = ['1', '2', '3', '4'];
-
-    const firstSquads = builder.build(fakeTeams);
-    const secondSquads = builder.build(fakeTeams);
-
-    expect(secondSquads).not.toEqual(firstSquads);
-  });
-
   it('returns default squad amount when teams are less than squads', () => {
     const fakeTeams = ['1', '2', '3'];
 

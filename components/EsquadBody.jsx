@@ -19,6 +19,7 @@ export default function EsquadBody() {
 
   const teamsSize = getTeamsAmount(squads);
 
+  // TODO: add tests for code below
   const buildSquads = async (teams, squadAmount) => {
     const requestOptions = {
       body: JSON.stringify({

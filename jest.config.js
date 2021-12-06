@@ -14,10 +14,10 @@ module.exports = {
   ],
   coverageThreshold: {
     global: {
-      statements: 85,
+      statements: 83,
       branches: 76,
       functions: 77,
-      lines: 84,
+      lines: 82,
     },
   },
   setupFilesAfterEnv: ['<rootDir>/setupTests.js/'],

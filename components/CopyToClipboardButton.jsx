@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { renderToString } from 'react-dom/server';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
@@ -35,10 +35,17 @@ export default function CopyToClipboardButton({ squadsComponent }) {
   const handleClick = () => {
     handleCopyToClipboard(squadsComponent);
     setIsClicked(true);
-    setTimeout(() => {
+  };
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
       setIsClicked(false);
     }, 4000);
-  };
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [isClicked]);
 
   return (
     <Box float="right" marginRight={2} marginTop={2}>
@@ -47,7 +54,6 @@ export default function CopyToClipboardButton({ squadsComponent }) {
         fontSize="xs"
         closeOnClick={false}
         placement="top"
-        closeDelay={2000}
         hasArrow
       >
         <Button

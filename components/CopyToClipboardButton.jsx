@@ -2,21 +2,16 @@ import { useEffect, useState } from 'react';
 import { renderToString } from 'react-dom/server';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
-import TurndownService from 'turndown';
 
 import { Box, Button, Tooltip } from '@chakra-ui/react';
 
-const renderedElementToMarkdown = async (elements) => {
-  const turndownService = new TurndownService();
-  const markdown = turndownService.turndown(elements);
-  return markdown;
-};
+import markdownizer from '../lib/markdownizer';
 
 const handleCopyToClipboard = async (squadsComponent) => {
   if (navigator.clipboard) {
     try {
       const renderedSquads = renderToString(squadsComponent);
-      const textForClipboard = await renderedElementToMarkdown(renderedSquads);
+      const textForClipboard = await markdownizer.markdownize(renderedSquads);
 
       const singleAsteriskBoldText = textForClipboard.replaceAll(/\*{2}/g, '*');
 

@@ -10,6 +10,7 @@ module.exports = {
     'config/jest',
     'coverage',
     './pages/_app.jsx',
+    'babel*',
   ],
   coverageThreshold: {
     global: {

@@ -12,13 +12,9 @@ const handleCopyToClipboard = async (squadsComponent) => {
     try {
       const renderedSquads = renderToString(squadsComponent);
       const textForClipboard = await markdownizer.markdownize(renderedSquads);
-      console.log('text for clipboard', textForClipboard);
 
-      let singleAsteriskBoldText = textForClipboard.replaceAll(/\*{2}/g, '*');
-      singleAsteriskBoldText = singleAsteriskBoldText.replaceAll(
-        /\n{2}/g,
-        '\n'
-      );
+      let singleAsteriskBoldText = textForClipboard.replace(/\*{2}/g, '*');
+      singleAsteriskBoldText = singleAsteriskBoldText.replace(/\n{2}/g, '\n');
 
       navigator.clipboard.writeText(singleAsteriskBoldText);
     } catch (err) {

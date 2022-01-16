@@ -1,6 +1,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 
 import CopyToClipboardButton from '../../components/CopyToClipboardButton';
+import markdownizer from '../../lib/markdownizer';
 
 const originalClipboard = { ...global.navigator.clipboard };
 
@@ -8,6 +9,7 @@ describe('CopyToClipboardButton', () => {
   beforeEach(() => {
     const mockClipboard = { writeText: jest.fn() };
     global.navigator.clipboard = mockClipboard;
+    markdownizer.markdownize = jest.fn(() => '');
   });
 
   afterEach(() => {

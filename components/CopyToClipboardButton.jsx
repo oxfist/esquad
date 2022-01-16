@@ -7,7 +7,6 @@ import { Box, Button, Tooltip } from '@chakra-ui/react';
 
 import markdownizer from '../lib/markdownizer';
 
-// TODO: add tests for code below
 const handleCopyToClipboard = async (squadsComponent) => {
   if (navigator.clipboard) {
     try {

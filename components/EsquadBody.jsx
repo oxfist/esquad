@@ -15,11 +15,11 @@ const getTeamsAmount = (squads) => {
 };
 
 export default function EsquadBody() {
+  const [isGenerating, setIsGenerating] = useState(false);
   const [squads, setSquads] = useState([]);
 
   const teamsSize = getTeamsAmount(squads);
 
-  // TODO: add tests for code below
   const buildSquads = async (teams, squadAmount) => {
     const requestOptions = {
       body: JSON.stringify({
@@ -39,15 +39,28 @@ export default function EsquadBody() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const splitTeams = event.target.teams.value.trim().split('\n');
-    const squadAmount = event.target.squadAmount.value;
-    const newSquads = await buildSquads(splitTeams, squadAmount);
-    setSquads(newSquads.body.squads);
+    setIsGenerating(true);
+
+    try {
+      const splitTeams = event.target.teams.value.trim().split('\n');
+      const squadAmount = event.target.squadAmount.value;
+      const newSquads = await buildSquads(splitTeams, squadAmount);
+
+      setSquads(newSquads.body.squads);
+
+      setIsGenerating(false);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
     <Flex id={styles.teamsForm} direction="row" alignItems="center" pt={24}>
-      <TeamsForm handleSubmit={handleSubmit} teamsSize={teamsSize} />
+      <TeamsForm
+        handleSubmit={handleSubmit}
+        teamsSize={teamsSize}
+        isGenerating={isGenerating}
+      />
       <Spacer p={3} />
       <SquadsList squads={squads} />
     </Flex>

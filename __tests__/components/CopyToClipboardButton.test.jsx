@@ -9,7 +9,7 @@ describe('CopyToClipboardButton', () => {
   beforeEach(() => {
     const mockClipboard = { writeText: jest.fn() };
     global.navigator.clipboard = mockClipboard;
-    markdownizer.markdownize = jest.fn(() => console.log('asdf'));
+    markdownizer.markdownize = jest.fn().mockResolvedValueOnce('');
   });
 
   afterEach(() => {

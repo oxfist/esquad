@@ -7,18 +7,14 @@ import { Box, Button, Tooltip } from '@chakra-ui/react';
 
 import markdownizer from '../lib/markdownizer';
 
-// TODO: add tests for code below
 const handleCopyToClipboard = async (squadsComponent) => {
   if (navigator.clipboard) {
     try {
       const renderedSquads = renderToString(squadsComponent);
       const textForClipboard = await markdownizer.markdownize(renderedSquads);
 
-      let singleAsteriskBoldText = textForClipboard.replaceAll(/\*{2}/g, '*');
-      singleAsteriskBoldText = singleAsteriskBoldText.replaceAll(
-        /\n{2}/g,
-        '\n'
-      );
+      let singleAsteriskBoldText = textForClipboard.replace(/\*{2}/g, '*');
+      singleAsteriskBoldText = singleAsteriskBoldText.replace(/\n{2}/g, '\n');
 
       navigator.clipboard.writeText(singleAsteriskBoldText);
     } catch (err) {

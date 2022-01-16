@@ -16,7 +16,7 @@ import {
   Spacer,
 } from '@chakra-ui/react';
 
-export default function TeamsForm({ handleSubmit, teamsSize }) {
+export default function TeamsForm({ handleSubmit, teamsSize, isGenerating }) {
   return (
     <Box>
       <form onSubmit={handleSubmit}>
@@ -40,7 +40,7 @@ export default function TeamsForm({ handleSubmit, teamsSize }) {
           </FormControl>
         </Box>
         <Flex pt={5}>
-          <Button colorScheme="purple" type="submit">
+          <Button colorScheme="purple" type="submit" isLoading={isGenerating}>
             Generar squads
           </Button>
           {teamsSize > 0 && (

@@ -4,15 +4,17 @@
 
 ## Improvements
 
-- [x] Add pipeline config to run tests
+- [x] Pipeline config to run tests
 - [x] Properly render squads
-- [x] Add formatting to squads with 'champion' space
+- [x] Formatting to squads with 'champion' space
 - [x] Extract squads arrangement algorithm and re-build with TDD
-- [x] Add selection of champion for each squad
+- [x] Selection of champion for each squad
 - [x] Upgrade to Next.js 11
-- [x] Add CSS style with Chakra UI (tag)
-- [x] Add option to select number of squads to build
-- [x] Add button to copy generated squads to clipboard
+- [x] CSS style with Chakra UI (tag)
+- [x] Option to select number of squads to build
+- [x] Copy to clipboard button for generated squads
+- [x] Loading animation for Generate Squads button
+- [ ] Option to generate without champions
 - [ ] Add option to keep two people in separate squads
 - [ ] Add selection of absents to exclude from squad building
 - [ ] Add CSS style with Tailwind CSS (tag)
